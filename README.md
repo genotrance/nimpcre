@@ -9,11 +9,7 @@ __Installation__
 Nimpcre can be installed via [Nimble](https://github.com/nim-lang/nimble):
 
 ```
-> nimble install nimgen
-
-> git clone https://github.com/genotrance/nimpcre
-> cd nimpcre
-> nimble install
+> nimble install nimpcre
 ```
 
 This will download, wrap and install nimpcre in the standard Nimble package location, typically ~/.nimble. Once installed, it can be imported into any Nim program.
