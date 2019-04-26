@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.1.3"
+version       = "0.1.4"
 author        = "genotrance"
 description   = "PCRE wrapper for Nim"
 license       = "MIT"
@@ -15,7 +15,8 @@ var
   name = "nimpcre"
   cmd = when defined(Windows): "cmd /c " else: ""
 
-mkDir(name)
+if fileExists(name & ".nimble"):
+  mkDir(name)
 
 task setup, "Checkout and generate":
   if gorgeEx(cmd & "nimgen").exitCode != 0:
