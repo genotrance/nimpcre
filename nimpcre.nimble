@@ -9,23 +9,10 @@ skipDirs = @["tests"]
 
 # Dependencies
 
-requires "nimgen >= 0.4.0"
+requires "nimterop >= 0.3.4"
 
 var
   name = "nimpcre"
-  cmd = when defined(Windows): "cmd /c " else: ""
-
-if fileExists(name & ".nimble"):
-  mkDir(name)
-
-task setup, "Checkout and generate":
-  if gorgeEx(cmd & "nimgen").exitCode != 0:
-    withDir(".."):
-      exec "nimble install nimgen -y"
-  exec cmd & "nimgen " & name & ".cfg"
-
-before install:
-  setupTask()
 
 task test, "Run tests":
   exec "nim c -r tests/t" & name & ".nim"
