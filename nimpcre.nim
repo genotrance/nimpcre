@@ -1,4 +1,4 @@
-import strutils
+import os, strutils
 
 import nimterop/[build, cimport]
 
@@ -28,4 +28,6 @@ getHeader(
   outdir = baseDir
 )
 
-{.passL: pcreLPath.replace("16", "").}
+{.passC: "-DPCRE_STATIC -I" & pcrePath.parentDir().}
+when "16" in pcreLPath or "32" in pcreLPath:
+  {.passL: pcreLPath.replace("16", "").}

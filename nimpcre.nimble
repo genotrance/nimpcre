@@ -15,4 +15,4 @@ var
   name = "nimpcre"
 
 task test, "Run tests":
-  exec "nim c -r tests/t" & name & ".nim"
+  exec "nim c -f -r tests/t" & name & ".nim"
