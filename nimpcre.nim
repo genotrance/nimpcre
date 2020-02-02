@@ -29,5 +29,15 @@ getHeader(
 )
 
 {.passC: "-DPCRE_STATIC -I" & pcrePath.parentDir().}
-when "16" in pcreLPath or "32" in pcreLPath:
-  {.passL: pcreLPath.replace("16", "").}
+const
+  lpath = 
+    when "16.a" in pcreLPath:
+      pcreLPath.replace("16.a", ".a")
+    elif "32.a" in pcreLPath:
+      pcreLPath.replace("32.a", ".a")
+    else:
+      pcreLPath
+static:
+  if lpath != pcreLPath:
+    echo "# Actually including library " & lpath
+{.passL: lpath.}
