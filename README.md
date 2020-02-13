@@ -24,6 +24,10 @@ echo "abc".match(re"a.+")
 
 NOTE: The `-d:usePcreHeader` flag needs to be specified to the Nim compiler in order to remove the dependency on the external DLL. This can also be accomplished by using a `nim.cfg` or `test.cfg` in the same directory as the code being compiled.
 
+On Windows, building PCRE will be simpler with `cmake` which can be installed with `nimble install cmake`. This will download and shim the `cmake` executable for convenience. Without `cmake`, the `autotools` suite will be needed since PCRE does not ship with a ready `configure` script. This will require a full [MSYS](https://www.msys2.org/) setup.
+
+`cmake` on Windows also requires a working `bash` which is already shipped with `git`. However, `git` is typically installed in `Program Files` and has a space in the path which breaks `cmake`. A [workaround](https://gist.github.com/genotrance/fb53504a4fba88bc5201d3783df5c522#file-travis-sh-L11) is to have `git` installed to another path.
+
 ```
 nim c -d:usePcreHeader -r test.nim
 ```
