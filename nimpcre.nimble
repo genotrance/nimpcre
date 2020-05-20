@@ -9,7 +9,7 @@ skipDirs = @["tests"]
 
 # Dependencies
 
-requires "nimterop >= 0.4.4"
+requires "nimterop >= 0.5.4"
 
 var
   name = "nimpcre"
